@@ -1,0 +1,100 @@
+#contents {
+    background: none repeat scroll 0 0 #eeeeee;
+    margin-left: 22%;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-bottom: 25px;
+    width: auto;
+    height: auto;
+    border-top-left-radius: 8px;
+    /* overflow: hidden; */
+  }
+  .bookdetail{
+      width: 100%;
+      height: 320px;
+      /* background: red; */
+      padding-top: 10px;
+  }
+  .bookdetail .left{
+    width: 20%;
+    height: 100%;
+    float: left;
+    background: pink;
+    margin-left: 10px;
+}
+.bookdetail .left img{
+    width: 100%;
+    height:100%;
+}
+.bookdetail .right{
+    width: 75%;
+    float: right;
+    padding-top: 20px;
+}
+.bookdetail .right p:nth-of-type(1){
+    font-size: 18px;
+    font-weight: bolder
+}
+
+  .bookcomment{
+    width: 100%;
+    height: 500px;
+    background: yellow;
+}
+.commentdetail{
+    width: 100%;
+    /* height: 500px; */
+    /* background: red; */
+}
+.commentdetail ul{
+    width: 100%;
+    /* height: 500px; */
+    overflow: hidden;
+    padding:0 10px;
+
+}
+.commentdetail ul li{
+    width: 100%;
+    height: 100px;
+    background: white;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.commentdetail ul li img{
+    width: 40px;
+    height: 40px;
+    
+}
+.commentdetail ul li a{
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+    background: orange;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 5px;
+    float: right;
+}
+#contents form{
+    width: 100%;
+    /* height: 500px; */
+    background: #ddd;
+    margin-top: 20px;
+    padding-bottom: 60px;
+}
+.commentdetail .nocomment{
+    width: 100%;
+    height: 50px;
+    background: #aaaaaa;
+    text-align: center;
+    line-height: 50px;
+    font-size: 12px;
+    color:#333;
+
+}
+#content{
+    height: 300px;
+}
+.form-group{
+    margin: 0 0!important;
+}

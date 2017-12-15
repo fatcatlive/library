@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>register</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="/jquery-1.12.4.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+
+html{
+    width: 100%;
+    height: 100%;
+  }
+  body{
+    background:url(images/back2.jpg) no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  </style>
+  
+  
+     
+  <body>
+
+
+    <div class="container registercontainer">
+
+            <form class="form-horizontal registerform" action="/users/register" method="post" onsubmit="return check()">
+                    <h3>注册</h3>
+                    <div class="form-group row text-center">
+                      <label for="inputEmail3" class="col-sm-3 control-label col-lg-3 ">用户名</label>
+                      <div class="col-sm-8 col-lg-8">
+                        <input type="text" class="form-control col-lg-2" id="username" placeholder="用户名" name="username">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-3 control-label col-lg-3 text-center">密码</label>
+                      <div class="col-sm-8 col-lg-8">
+                        <input type="password" class="form-control col-sm-6" id="password" placeholder="密码" name="password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label col-lg-3 text-center">确认密码</label>
+                            <div class="col-sm-8 col-lg-8">
+                              <input type="password" class="form-control " id="password1" placeholder="确认密码">
+                            </div>
+                          </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-4 col-sm-10">
+                        <button type="submit" class="btn btn-default">Sign in</button>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="txt"></span>
+                      </div>
+                  </form>
+            
+
+    </div>
+
+    
+
+  </body>
+</html>
+<script>
+    
+    
+     
+ 
+     function check(){
+
+     var username=$("#username");
+     var password=$("#password");
+     var password1=$("#password1");
+ 
+       var bstop=true;
+ 
+       if(!username.val()){
+         $(".txt").html("提示：用户名不能为空")
+         bstop=false;
+       }else if(!password.val()||!password1.val()){
+         $(".txt").html("提示：密码不能为空");
+         bstop=false;
+       }else if(!/^[\u4E00-\u9FA5A-Za-z0-9_]{6,20}$/.test(username.val())){
+         $(".txt").html("提示：用户名格式不正确，请输入6-20位的字母，数字，下划线或中文");
+         bstop=false;
+ 
+       }else if(!/^\w{5,17}$/.test(password.val())){
+         $(".txt").html("提示：密码格式不正确，请输入6-18位的字母，数字，下划线");
+         bstop=false;
+       }else if(password.val()!=password1.val()){
+        $(".txt").html("提示：二次密码不一致");
+         bstop=false;
+       }
+       else{
+         $(".txt").html("")
+       }
+       
+       if(bstop){
+         return true;
+ 
+       }else{
+         return false;
+       }
+ 
+ 
+     }
+ 
+     
+ 
+     
+   
+   </script>

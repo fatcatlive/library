@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>adduser</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/updateuser.css' />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="/jquery-1.12.4.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/layer/layer.js"></script>
+    
+  </head>
+  <style>
+
+  
+  
+  </style>
+  
+     
+  <body>
+
+
+    <%- include("haf")%>
+
+              <div id="content" class="container">
+
+                    <form style="width:40%;height:100%;margin-left:20%;margin-top:10%;">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">用户名</label>
+                          <input type="text" class="form-control" placeholder="用户名" id="username" value="">
+                        </div>
+                        <div class="form-group">
+                                <label for="exampleInputPassword1">密码</label>
+                                <input type="password" class="form-control"  placeholder="密码" id="password" value="">
+                              </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">联系手机号</label>
+                          <input type="text" class="form-control"  placeholder="手机号" id="telephone" value="">
+                        </div>
+                        <div class="form-group">
+                                <label for="exampleInputPassword1"></label>邮箱</label>
+                                <input type="email" class="form-control"  placeholder="邮箱" value="" id="email">
+                        </div>
+                        <div class="form-group">
+                                <label for="exampleInputPassword1"></label>性别</label>
+                                <div class="form-control" style='border:none;'">
+                                        <input type="radio" name="sex" style='margin-left:30px;' value='男'">男  <input type="radio"  name="sex" value='女'>女
+                                </div>
+                                
+                                
+                        </div>
+                          
+                        <button type="button" class="btn btn-primary" >添加</button>
+                      </form>
+                      
+
+                    
+                    
+       
+              </div>
+
+        </body>
+</html>
+<script>
+    $("button").on("click",function(){
+       var username=$("#username").val();
+       var password=$("#password").val();
+       var telephone=$("#telephone").val();
+       var email=$("#email").val();
+       var sex=$("input[name='sex']:checked").val();
+       console.log(username,password,telephone,email,sex)
+
+       $.ajax({
+           url:"/superuser/addusersubmit",
+           data:{
+               username:username,
+               password:password,
+               telephone:telephone,
+               email:email,
+               sex:sex,
+           },
+           type:"get",
+           success:function(data){
+               console.log(data);
+               if(data=="0"){
+                layer.msg("用户名已存在",{icon:2})
+               }else{
+                layer.msg("添加成功",{icon:1})
+               }
+             
+              setTimeout(function(){
+                  window.location.href="/superuser/updateuser"
+              },2000)
+
+           }
+
+       })
+
+
+
+
+    })
+    
+
+   
+
+
+</script>
+
+
+

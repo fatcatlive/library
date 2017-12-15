@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>updateuser</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/updateuser.css' />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="/jquery-1.12.4.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/layer/layer.js"></script>
+    
+  </head>
+  <style>
+
+  
+  
+  </style>
+  
+     
+  <body>
+
+
+    <%- include("haf")%>
+
+              <div id="content">
+
+                    <table class="table table-hover table-bordered bigtable bigbox">
+                            <caption class="h1 text-info">用户信息管理</caption>
+                
+                            <tr class="text-center text-danger">
+                                <td>用户名</td>
+                                <td>密码</td>
+                                <td>手机号</td>
+                                <td>邮箱</td>
+                                <td>性别</td>
+                                <td>
+                                    操作
+                                </td>
+                            </tr>
+                            <% if(result.length>0){%>
+                                <%result.forEach((item,index)=>{%>
+                                    <tr class="text-center">
+                                        <td><%- item.username%></td>
+                                        <td><a href="##"><%- item.password%></a></td>
+                                        <td><%- item.telephone%></td>
+                                        <td><%- item.email%></td>
+                                        <td><%- item.sex%></td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletebox" onclick="deleteone('<%- item.username%>')">删除</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"  onclick="setadmin('<%- item.username%>')">设置为管理员</button>
+                           
+                                        </td>
+                                    </tr>
+                                <%})%>
+                                <tr>
+                                        <td colspan="6" class="text-center">
+                                                <a href="/superuser/updateuser?pageNo=1">首页</a>
+                                                <a href="/superuser/updateuser?pageNo=<%- pageNo<=1?1:pageNo-1%>">上一页</a>
+                                                <a href="/superuser/updateuser?pageNo=<%- pageNo>=totalPage?1:pageNo+1%>">下一页</a>
+                                                <a href="/superuser/updateuser?pageNo=<%- totalPage%>">尾页</a>
+                                                <%- pageNo %>/ <%- totalPage%>
+                                                共<%- count %>  条数据    
+                                                
+                                                
+                                            </td>
+                                   
+                                </tr>
+                                <tr>
+                                        <td colspan="6" class="text-right"> 
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletebox" onclick="deleteone(-1)">删除全部</button>
+                                        </td>
+                                </tr>
+                                <% }else{%>
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted"> 
+                                        <p>暂无数据...</p>
+                                    </td>
+                                </tr>
+                            <% }%>
+                         
+                                
+                
+                            
+                        </table>
+
+
+
+
+                        <div class="modal fade" tabindex="-1" role="dialog" id="deletebox">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">你确定删除用户吗?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>请确认后删除</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                                        <button type="button" class="btn btn-danger" onclick="del()">确定</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+           
+                    
+       
+              </div>
+
+          
+        </body>
+</html>
+<script>
+
+    var deleteId=null;
+    function deleteone(arg){
+        console.log(arg);
+        if(arg!=-1){
+            uname=arg;
+        }else{
+            uname=-1;
+        }
+    }
+
+    function del(){
+        console.log(uname);
+
+        $.ajax({
+            url:"/superuser/userdelete",
+            data:{
+                uname:uname,
+            },
+            type:"get",
+            success:function(data){
+                console.log(data);
+                $('#deletebox').modal('hide');
+                window.location.href = "/superuser/updateuser";
+
+
+            }
+        })
+
+    }
+
+
+
+
+    function setadmin(arg){
+        var uname=arg;
+        $.ajax({
+            url:"/superuser/setadmin",
+            data:{
+                uname:uname,
+            },
+            type:"get",
+            success:function(data){
+                console.log(data)
+                layer.msg("设置成功",{icon:1})
+
+                setTimeout(function(){
+                    window.location.href = "/superuser/updateuser";
+
+                },2000)
+               
+                
+
+            }
+        })
+
+    }
+
+
+
+
+</script>
+
+
+

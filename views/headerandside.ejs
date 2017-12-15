@@ -1,0 +1,60 @@
+<div id="header">
+        <h1><span class="glyphicon glyphicon-book"></span><a href="./dashboard.html">个人图书管理系统</a></h1>		
+
+       
+        <div class="loginandregister">
+         <% if(!username){ %>
+          <a href="/login">登录</a>/<a href="/register">注册</a>
+          
+          
+         <% }else{ %>
+          <span>欢迎你！<%=username%></span><button onclick="window.location.href='/loginout'">注销</button>
+            
+         <% }%>
+               
+                
+         </div>       
+        
+    </div>
+
+
+
+
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+         <a href="/">首页</a>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <span class="glyphicon glyphicon-user"></span>个人信息管理
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <li><a href="/updatepassword">修改密码</a></li>
+              <li><a href="/updatepersonmessage">修改个人信息</a></li>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="glyphicon glyphicon-list">图书信息管理
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                    <li><a href="/book/mybook">我的书架</a></li>
+                    <li><a href="/book/searchbook">查询图书</a></li>
+            </div>
+          </div>
+        </div>
+        
+      
+      </div>

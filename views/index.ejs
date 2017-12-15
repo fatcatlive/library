@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>home</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="/jquery-1.12.4.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/layer/layer.js"></script>
+    
+  </head>
+  <style>
+
+  
+
+  
+  </style>
+  
+     
+  <body>
+
+
+    <%- include("headerandside")%>
+
+              <div id="content">
+
+                <div class="contentheader">
+                  全部图书
+                </div>
+                <div class="contentbox">
+                  <ul>
+
+                    <%result.forEach((item,index)=>{%>
+
+                      <li>
+                          <a class="img" href="book/detail?bookid=<%- item.id%>"><img src="<%- item.image%>"></a>
+                          <p>《<%- item.title%>》</p>
+                          <p><%- item.author%></p>
+                          <%if(username){%>
+                            <a class="add" href="##" data-toggle="modal" data-target="#addsure" onclick="sure('<%- item.id%>')">加入我的书架</a>
+                            <a class="lookdetail" href="/book/detail?bookid=<%- item.id%>" >查看详情</a>
+                            
+                          <% }else{%>
+                            <a class="add tell" href="##" >加入我的书架</a>
+                            <a class="lookdetail tell" href="##" >查看详情</a>
+                                                        
+                         <% }%>
+                          
+                          
+                        </li>
+
+                   <% })%>
+                    
+                    
+                    
+                  </ul>
+                </div>
+
+
+               
+               <div class="foot">
+                 <%for(var i=totalPage;i>0;i--){%>
+                   <a href="/?pageNo=<%=i%>"><%=i%></a>
+                 <%}%>
+                   
+               </div>
+       
+              </div>
+
+            
+    
+        
+        </body>
+</html>
+
+<script>
+
+  var sureId=null;
+  function sure(arg){
+    sureId=arg;
+  
+
+
+    $.ajax({
+      url:"/book/addtomybook",
+      data:{
+        id:sureId
+      },
+      type:"get",
+      success:function(data){
+        console.log(data);
+        layer.msg('加入书架成功', {icon: 1});
+        setTimeout(function(){
+          window.location.href="/";
+        },2000)
+       
+
+      }
+    })
+
+  }
+
+$(".tell").click(function(){
+  layer.msg("亲，你没有登录喔")
+})
+
+
+</script>

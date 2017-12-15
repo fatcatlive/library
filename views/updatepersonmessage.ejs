@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>register</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="jquery-1.12.4.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    
+  </head>
+  
+     
+  <body>
+
+
+    <%- include("headerandside")%>
+
+              <div class="container" id="content">
+
+
+
+                    <form style="width:40%;height:100%;margin-left:20%;margin-top:10%;" action="/users/updatepersonmessagesubmit" method="post">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">用户名</label>
+                              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="用户名" name="username" value="<%- result.username%>">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">联系手机号</label>
+                              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="手机号" name="telephone" value="<%- result.telephone%>">
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputPassword1"></label>邮箱</label>
+                                    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="邮箱" value="<%- result.email%>" name="email">
+                            </div>
+                            <div class="form-group">
+                                    <label for="exampleInputPassword1"></label>性别</label>
+                                    <div class="form-control" style='background:#999999;border:none;'">
+                                            <input type="radio" name="sex" style='margin-left:30px;' value='男'">男  <input type="radio"  name="sex" value='女'>女
+                                    </div>
+                                    
+                                    
+                            </div>
+                            
+
+
+
+                           
+                           
+                            <button type="submit" class="btn btn-primary" >提交</button>
+                          </form>
+
+
+
+
+                    
+              </div>
+
+            
+        </body>
+</html>
+

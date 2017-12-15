@@ -1,0 +1,128 @@
+body{
+    background:white !important;
+    background-size: 100% 100% !important;
+    width: 100% !important;
+    /* height: 100%; */
+    margin: 0;
+    padding: 0;
+   }
+
+#content {
+    background: none repeat scroll 0 0 #eeeeee;
+    margin-left: 270px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-bottom: 25px;
+    /* position: relative; */
+    height: 680px;
+    width: auto;
+    border-top-left-radius: 8px;
+  }
+.contentheader{
+    width: 100%;
+    height: 50px;
+    background: #dddddd;
+    font-size: 20px;
+    line-height: 50px;
+    padding: 0;
+ 
+  }
+ .contentbox{
+   width: 100%;
+   overflow: hidden;
+ }
+ .contentbox ul{
+   width: 100%;
+ 
+ }
+ .contentbox ul li{
+   list-style: none;
+   width: 23%;
+   height: 290px;
+   background: #cccccc;
+   float: left;
+   margin-top: 10px;
+   margin:1%;
+   border-radius: 6px;
+ 
+ }
+ .contentbox ul li .img{
+   display: block;
+   width: 50%;
+   height: 150px;
+   /* background: blue; */
+   margin-left: 25%;
+   margin-bottom: 10px;
+   margin-top: 5px;
+ }
+ .contentbox ul li img{
+   width: 100%;
+   height: 100%;
+   
+ }
+ .contentbox ul li p{
+   width: 100%;
+   height: 20px;
+   
+   text-align: center;
+   line-height: 20px;
+   font-size: 12px;
+   margin-bottom: 0;
+ }
+ .contentbox ul li .add{
+   display: block;
+   width: 50%;
+   height: 30px;
+   border-radius: 5px;
+   margin-left: 25%;
+   background: orange;
+   text-align: center;
+   line-height: 30px;
+   font-size: 12px;
+   margin-top:10px;
+   color:black;
+ }
+ .contentbox ul li .lookdetail{
+  display: block;
+  width: 50%;
+  height: 30px;
+  border-radius: 5px;
+  margin-left: 25%;
+  background: orange;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  margin-top:10px;
+  color:black;
+}
+ .foot{
+     width: 100%;
+     height:50px;
+    
+
+ }
+ .foot a{
+     display: inline-block;
+     width: 30px;
+     height: 30px;
+     background: orange;
+     margin: 0 10px;
+     float: right;
+     text-align: center;
+     line-height: 30px;
+     margin-top: 10px;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

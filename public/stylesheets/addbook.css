@@ -1,0 +1,48 @@
+#content{
+   height:500px;
+   /* background:red; */
+
+}
+#content .left{
+    width: 30%;
+    height: 500px;
+    /* background: yellow; */
+    float: left;
+    position: relative;
+}
+#content .left img{
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+#content .right{
+    width: 60%;
+    height: 500px;
+    /* background: pink; */
+    float: left;
+}
+
+#content .right .form{
+    width: 80%;
+    height: 100%;
+    /* background: blue; */
+    margin-top: 20px;
+    margin-left: 30px;
+
+}
+#content .right .form input{
+    width: 70%;
+    height: 40px;
+    
+}
+#content .right .form .btn{
+    width: 100px;
+    height: 30px;
+    margin-left: 30%;
+   
+}

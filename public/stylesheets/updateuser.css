@@ -1,0 +1,10 @@
+#content{
+    background:  white;
+    border: 2px solid #222222;
+
+}
+
+#content .bigtable{
+    width: 90% !important;
+    margin-left: 5% !important;
+}

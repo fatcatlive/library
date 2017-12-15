@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>detail</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/searchbook.css' />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <script src="/jquery-1.12.4.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/xheditor/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/xheditor/xheditor-1.2.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/xheditor/xheditor_lang/zh-cn.js"></script>       
+  </head>
+  <style>
+
+  
+  </style>
+  
+     
+  <body>
+
+
+    <%- include("headerandside")%>
+
+              <div id="contents">
+
+                <div class="top">
+                        <div class="col-md-10">
+                                <div class="input-group">
+                                <input type="text" class="form-control" placeholder="输入你要搜索的书名" name="bkname" id="booklist"> 
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">搜索</button>
+                                </span>
+                                </div>
+                        </div>
+                </div>
+                <div class="bottom">
+                    <h5>为你推荐：</h5>
+                    <ul>
+                            <li>
+                                    <a href="##"><img src="https://img3.doubanio.com/mpic/s27264181.jpg" alt=""></a>
+                                    <p>小王子</p>
+                                    <p>作者：小胖胖</p>
+                            </li>
+                    </ul>
+                    
+
+
+                </div>
+
+               
+                
+                
+
+              </div>
+
+         
+    
+        
+        </body>
+</html>
+
+<script>
+
+
+    $(".btn").click(function(){
+        var txt= $("#booklist").val();
+        $.ajax({
+            url:"/book/searchinputbook",
+            data:{
+                title:txt,
+            },
+            type:"get",
+            success:function(data){
+               console.log(data)
+               var str="";
+               if(data=="0"){
+                   str+=` <li>
+                            <a href="##"><img src="https://img3.doubanio.com/mpic/s27264181.jpg" alt=""></a>
+                            <p>小王子</p>
+                            <p>作者：小胖胖</p>
+                         </li>`
+
+                         $("h5").html("为你推荐：")
+
+               }else{
+
+               
+               
+               data.forEach((item,index)=>{
+                   str+=`<li>
+                            <a href="/book/detail?bookid=${item.id}"><img src="${item.image}" alt=""></a>
+                            <p>${item.title}</p>
+                            <p>作者：${item.author}</p>
+                         </li>`
+               })
+
+              $("h5").html("为你找到以下结果：")
+
+               }
+               $("ul").html(str);
+
+            }
+        })
+
+    })
+
+</script>
